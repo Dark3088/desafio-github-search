@@ -1,13 +1,11 @@
 package br.com.igorbag.githubsearch.ui
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
@@ -41,27 +39,41 @@ class MainActivity : AppCompatActivity() {
     private fun setupListeners() {
         btnConfirm.setOnClickListener {
             // Action
+            val currentUser = userName.text.trim().toString()
+            if (currentUser.isNotEmpty()){
+                saveUserLocal(currentUser)
+            }
         }
     }
 
+    private fun saveUserLocal(currentUser: String) {
+        val editor =  getSharedPreferences("GITHUB_USER", Context.MODE_PRIVATE).edit()
+        editor.apply {
+            putString("current_user", currentUser)
+            apply()
+        }
+    }
 
-    // salvar o usuario preenchido no EditText utilizando uma SharedPreferences
-    private fun saveUserLocal() {
-        //@TODO 3 - Persistir o usuario preenchido na editText com a SharedPref no listener do botao salvar
+    private fun getUserLocal(): String? {
+        val sharedPreferences = getSharedPreferences("GITHUB_USER", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("current_user", "")
     }
 
     private fun showUserName() {
-        //@TODO 4- depois de persistir o usuario exibir sempre as informacoes no EditText  se a sharedpref possuir algum valor, exibir no proprio editText o valor salvo
+        val currentUser = getUserLocal()
+        if (!currentUser.isNullOrEmpty()){
+            userName.setText(currentUser)
+        }
     }
 
     //Metodo responsavel por fazer a configuracao base do Retrofit
     fun setupRetrofit() {
         /*
-           @TODO 5 -  realizar a Configuracao base do retrofit
-           Documentacao oficial do retrofit - https://square.github.io/retrofit/
-           URL_BASE da API do  GitHub= https://api.github.com/
-           lembre-se de utilizar o GsonConverterFactory mostrado no curso
-        */
+       @TODO 5 -  realizar a Configuracao base do retrofit
+       Documentacao oficial do retrofit - https://square.github.io/retrofit/
+       URL_BASE da API do  GitHub= https://api.github.com/
+       lembre-se de utilizar o GsonConverterFactory mostrado no curso
+    */
     }
 
     //Metodo responsavel por buscar todos os repositorios do usuario fornecido
@@ -72,9 +84,9 @@ class MainActivity : AppCompatActivity() {
     // Metodo responsavel por realizar a configuracao do adapter
     fun setupAdapter(list: List<Repository>) {
         /*
-            @TODO 7 - Implementar a configuracao do Adapter , construir o adapter e instancia-lo
-            passando a listagem dos repositorios
-         */
+        @TODO 7 - Implementar a configuracao do Adapter , construir o adapter e instancia-lo
+        passando a listagem dos repositorios
+     */
     }
 
 
@@ -101,7 +113,5 @@ class MainActivity : AppCompatActivity() {
                 Uri.parse(urlRepository)
             )
         )
-
     }
-
 }
