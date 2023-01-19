@@ -7,7 +7,7 @@
     tools:context=".ui.MainActivity">
 
     <TextView
-        android:id="@+id/tv_titulo"
+        android:id="@+id/tv_title"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_nome_usuario"
+        android:id="@+id/et_user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -27,27 +27,27 @@
         android:maxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_titulo" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <Button
-        android:id="@+id/btn_confirmar"
+        android:id="@+id/btn_confirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/confirmar"
-        app:layout_constraintEnd_toEndOf="@id/et_nome_usuario"
-        app:layout_constraintStart_toStartOf="@id/et_nome_usuario"
-        app:layout_constraintTop_toBottomOf="@id/et_nome_usuario" />
+        app:layout_constraintEnd_toEndOf="@id/et_user_name"
+        app:layout_constraintStart_toStartOf="@id/et_user_name"
+        app:layout_constraintTop_toBottomOf="@id/et_user_name" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_lista_repositories"
+        android:id="@+id/rv_repo_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_confirmar"
+        app:layout_constraintTop_toBottomOf="@id/btn_confirm"
         tools:listitem="@layout/repository_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
