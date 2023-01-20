@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">GitHubSearch</string>
-    <string name="nome_usuario">Nome do usuário</string>
-    <string name="confirmar">Confirmar</string>
+    <string name="app_name">GitHub</string>
+    <string name="user_name">User Name</string>
+    <string name="confirm">Confirm</string>
+    <string name="description_share_repo">A black triangular shape containing three connected dots</string>
+    <string name="results">Results:</string>
 </resources>
