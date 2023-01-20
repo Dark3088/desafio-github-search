@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -79,9 +81,9 @@ class GitHubSearchFragment : Fragment() {
         if (savedInstanceState == null) showUserName()
 
         searchViewModel.repoList.observe(this.viewLifecycleOwner) { newRepoList ->
+            repoListView.isVisible = true
             setUpAdapter(newRepoList)
 
-            repoListView.isVisible = true
             progressBar.isVisible = false
             resultText.isVisible = true
         }
