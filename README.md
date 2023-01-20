@@ -27,6 +27,11 @@ Technologies used:
 - GitHub API
 
 
+Screenshots:
+------------
+<img src="GitHub_Images/GitHub_App_1.png" width="250" /> <img src="GitHub_Images/GitHub_App_2.png" width="250" />
+
+
 Getting Started
 ---------------
 
